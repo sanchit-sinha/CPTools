@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+
+{% block style %}
+    <style>
+         .calculator {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+    }
+
+    .calculator-screen {
+      width: 100%;
+      height: 80px;
+      border: none;
+      background-color: #252525;
+      color: #fff;
+      text-align: right;
+      padding-right: 20px;
+      padding-left: 10px;
+      font-size: 4rem;
+    }
+
+
+    .equal-sign {
+      height: 98%;
+      grid-area: 2 / 4 / 6 / 5;
+    }
+
+    .calculator-keys {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 20px;
+      padding: 20px;
+    }
+    </style>
+{% endblock style %}
+
+{% block body %}
+    <div class = "container my-5">
+            <h3 class = "text-center">
+                Use the following calculator to perform advance calculations
+            </h3>
+        </div>
+    </div>
+    <div class = "container">
+        <div class = "search my-5">
+            <input class="form-control" id="screen" name = "screen" type="text" placeholder="Calculate..">
+        <button type="button" class="btn btn-block btn-warning my-2" value = "=" onclick = "display_result()"><b>Evaluate</b></button>
+        </div>
+    </div>
+
+    <div class = "container" id = "evaluated_result">
+        
+    </div>
+
+
+    <div class="container my-9">  
+
+
+<div class="calculator card">
+
+
+    <div class="calculator-keys bg-light">
+
+      <button type="button" class="operator btn-secondary btn-info p-4 bg-primary" value="+"><b>+</b></button>
+      <button type="button" class="operator btn-secondary btn-info p-4 bg-primary" value="-"><b>-</b></button>
+      <button type="button" class="operator btn-secondary btn-info p-4 bg-primary" value="*"><b>&times;</b></button>
+      <button type="button" class="operator btn-secondary btn-info p-4 bg-primary " value="/"><b>&divide;</b></button>
+      <button type="button" value="7" class="btn btn-secondary waves-effect bg-info p-4"><b>7</b></button>
+      <button type="button" value="8" class="btn btn-secondary waves-effect bg-info p-4"><b>8</b></button>
+      <button type="button" value="9" class="btn btn-secondary waves-effect bg-info p-4"><b>9</b></button>
+
+      <button type="button" value="**" class="btn btn-secondary waves-effect bg-primary p-4">
+        <b><span class="x-sign">
+                <sub><b>x</b></sub>
+              </span>
+              <span>
+                <sup><b>y</b></sup>
+              </span></b></button>
+      
+      <button type="button" value="4" class="btn btn-secondary waves-effect bg-info p-4"><b>4</b></button>
+      <button type="button" value="5" class="btn btn-secondary waves-effect bg-info p-4"><b>5</b></button>
+      <button type="button" value="6" class="btn btn-secondary waves-effect bg-info p-4"><b>6</b></button>
+      
+      <button type="button" value="|" class="btn btn-secondary waves-effect bg-primary p-4"><b>OR</b></button>
+      
+      <button type="button" value="1" class="btn btn-secondary waves-effect bg-info p-4"><b>1</b></button>
+      <button type="button" value="2" class="btn btn-secondary waves-effect bg-info p-4"><b>2</b></button>
+      <button type="button" value="3" class="btn btn-secondary waves-effect bg-info p-4"><b>3</b></button>
+      
+      <button type="button" value="&" class="btn btn-secondary waves-effect bg-primary p-4"><b>AND</b></button>
+      
+      <button type="button" value="0" class="btn btn-secondary waves-effect bg-info p-4"><b>0</b></button>
+      <button type="button" class="decimal function btn btn-secondary" value=".">.</button>
+      <button type="button" class="all-clear function btn btn-danger btn-sm" value="all-clear">AC</button>
+        <button type="button" value="^" class="btn btn-secondary waves-effect bg-primary p-4"><b>XOR</b></button>
+
+      {% comment %} <button type="button" class="all-clear function btn btn-warning btn-sm" value="=">=</button> {% endcomment %}
+
+
+    </div>
+  </div>
+</div>
+<script>
+    function display_result(){
+        var screen = document.getElementById('screen');
+        if(screen.value != ""){
+            var ans = eval(screen.value);
+            var result = '<h4 class = "text-primary text-center" style = "font-weight:bolder;">Your result is - </h4>';
+            result = result + '<h1 class = "text-success text-center" style = "font-weight:bolder;">' + ans + '</h1>';
+            document.getElementById("evaluated_result").innerHTML = result;
+        }
+        else{
+            document.getElementById("evaluated_result").innerHTML = "";
+        }
+    }
+
+    let screen = document.getElementById('screen');
+    buttons = document.querySelectorAll('button');
+    for (item of buttons) {
+        item.addEventListener('click', (e) => {
+            buttonText = e.target.value;
+            console.log('Button text is ', buttonText);
+            if (buttonText == "all-clear") {
+                screenValue = "";
+                screen.value = "";
+            }
+            else if(buttonText == "="){
+                display_result();
+            }
+            else {
+                screen.value += buttonText;
+            }
+
+        })
+    }
+</script>
+{% endblock body %}

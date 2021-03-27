@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block style %}
+
+{% endblock style %}
+
+{% block body %}
+   
+    </div>
+        {% comment %} <img src="{% static 'logo.png' %}" class="d-block w-30" id = "logo" > {% endcomment %}
+        <img src="{% static 'codesymbol1.jpg' %}" class="d-block w-100">
+        {% comment %} <img src="{% static 'logo.png' %}" class="d-block w-100" style="height:300px;"> {% endcomment %}
+
+        <div class="container py-5" id="hanging-icons">
+
+  <h1 class="pb-2 border-bottom text-center" id = "main-heading-CP"> <b>Welcome to CP-Tools</b> </h1>
+  <div class="row g-5 my-5">
+    <div class="col-md-4 d-flex align-items-start">
+      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+      </div>
+      <div>
+        <h2>CP Calculator</h2>
+        <p>Helps you perform simple to complex calculations in just fractions of seconds. This is an advanced calculator that will allow you to perform all kind of operations.</p>
+        <a href="/calculator" class="btn btn-primary">
+          OPEN
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4 d-flex align-items-start">
+      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill"></use></svg>
+      </div>
+      <div>
+        <h2>Code Snippets</h2>
+        <p>Find code snippets of almost all the important algorithms at one place. This snippet is written for C++ language and needs to be converted for use in other languages.</p>
+        <a href="/snippets" class="btn btn-primary">
+          OPEN
+        </a>
+      </div>
+    </div>
+    <div class="col-md-4 d-flex align-items-start">
+      <div class="icon-square bg-light text-dark flex-shrink-0 me-3">
+        <svg class="bi" width="1em" height="1em"><use xlink:href="#tools"></use></svg>
+      </div>
+      {% comment %} <div>
+        <h2>Peronsalised Page</h2>
+        <p>Save the snippets you feel important on your own webpage. You can even add new snippets over there as per your convenience and requirement.</p>
+        <a href="#" class="btn btn-primary">
+          OPEN
+        </a>
+      </div> {% endcomment %}
+      <div>
+        <h2>Contact Page</h2>
+        <p>Feel free to contact me. Suggestions or improvements are always welcome.
+        You can also share your snippet which you want me to add over here.</p>
+        <a href="/contact" class="btn btn-primary">
+          OPEN
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+        
+{% endblock body %}

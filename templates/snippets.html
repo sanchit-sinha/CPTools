@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block title %}Snippets{% endblock title %}
+
+{% block style %}
+  .sec{
+        background-color: #007BFF;
+
+}
+  .sec:hover {
+        background-color: #28A745;
+    }
+{% endblock style %}
+
+
+{% block body %}
+    <div class = "container my-5">
+        <h3 class = "text-center">
+            Following are the snippets that comes handy in competitive programming!
+        </h3>
+        <p class = "text-center"> <b><em>(All the snippets are in C++) </em></b></p>
+    </div>
+</div>
+
+    <div class = "container">
+         <div class = "search">
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    </div>
+
+    <div class="accordion my-5" id="accordionExample">
+    {% for x in variable1 %}
+      <div class="card m-b-0 my-1 sec" >
+            <button class="accordianbtn btn btn-link card-title mb-0 p-0"  type="button" id = "{{x.id}}" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <div class="card-header text-center" id="heading">
+          <p class="mb-0 text-light ">
+                <strong>{% filter upper %} {{x.name}} {% endfilter %}</strong>
+          </p>
+        </div>
+            </button>
+
+        <div id="collapse{{x.id}}" class="collapse accordion_description hide bg-warning " aria-labelledby="headingOne" data-parent="#accordionExample">
+         {% comment %} <button type="button" class="btn btn-light float-right mx-1 my-2 p-2" onclick = "CopyToClipboard()" >COPY</button> {% endcomment %}
+           <div class="card-body">
+           <p id = "snippet_code">
+            <pre>{{x.value}}<pre>
+          </p>
+          </div>
+        </div>
+
+        <input type="text" value="{{x.value}}"  style="display:none" id="snippet_code">
+
+        </div>
+    {% endfor %}
+ 
+
+    <script>
+         
+$(document).ready(function(){
+  $("#myInput").on("keypress click input", function () {
+      var val = $(this).val();
+      if(val.length) {
+          $(".accordion .card.m-b-0").hide().filter(function () {
+              return $('.card-title', this).text().toLowerCase().indexOf(val.toLowerCase()) > -1;
+          }).show();
+      }
+      else {
+          $(".accordion .card.m-b-0").show();
+      }
+  });
+  
+});
+
+    $('.accordianbtn').click(function(){
+        var ID = "collapse" + this.id;
+        var ele = document.getElementById(ID);
+        if (ele.style.display === "block") {
+          ele.style.display = "none";
+        } else {
+          ele.style.display = "block";
+        }
+    });
+
+
+    function CopyToClipboard()
+    {
+      var copyText = document.getElementById("snippet_code");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999)
+      document.execCommand("snippet_code");
+    }
+    </script>
+    
+        
+    </div>
+{% endblock body %}
