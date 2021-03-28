@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 from django.contrib.messages import constants as messages
 import os
+from decouple import config
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -22,7 +25,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@%fw#@pk6t33d*l&%=nxxf04^^!$x_6ri_%#9z6nh5%gg#9bp@'
+SECRET_KEY = config("SECRET_KEY") # this is to replace the secret key you cut away before
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
