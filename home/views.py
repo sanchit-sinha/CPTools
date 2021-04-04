@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from datetime import datetime
 from django.contrib import messages
-from .models import snippet_table , Contact
+from .models import snippet_table , Contact , codeforce_submission
 
 
 # Create your views here.
@@ -39,4 +39,8 @@ def cp_solutions(request):
     return render(request , 'cp_solutions.html')
 
 def codeforces_submissions(request):
-    return render(request , 'codeforces_submissions.html')
+    cf_submissions = codeforce_submission.objects.all().order_by('problem_name')
+    context = {
+        "variable1" : cf_submissions
+    }
+    return render(request , 'codeforces_submissions.html' , context)

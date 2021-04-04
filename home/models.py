@@ -19,3 +19,14 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.firstname
+
+class codeforce_submission(models.Model):
+    problem_name = models.CharField(max_length=122)
+    language = models.CharField(max_length=122)
+    time = models.CharField(max_length=122)
+    memory = models.CharField(max_length=122)
+    solution =  models.TextField()
+    date = models.DateTimeField(null = True , blank = True)
+
+    def __str__(self):
+        return self.problem_name
