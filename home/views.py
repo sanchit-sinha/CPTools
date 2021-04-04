@@ -34,3 +34,9 @@ def contact(request):
         "display_style" : display_style
     }
     return render(request , 'contact.html' , context)
+
+def cp_solutions(request):
+    return render(request , 'cp_solutions.html')
+
+def codeforces_submissions(request):
+    return render(request , 'codeforces_submissions.html')

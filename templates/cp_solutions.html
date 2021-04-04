@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CP-Solutions{% endblock title %}
+{% block style%}
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    }
+
+    @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+{% endblock style%}
+{% block body%}
+    <div class = "container-fluid m-0 p-0">
+        <div class="position-relative overflow-hidden p-0 p-md-5 text-center bg-dark">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 fw-normal text-light">CP-SOLUTIONS</h1>
+        <p class="lead fw-normal text-light">
+        <em>It contains some of my submissions from popular platforms like Codeforces</em>
+        </p>
+        </div>
+        <div class="product-device shadow-sm d-none d-md-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+    </div>
+    </div>
+ 
+    <div class = "container">
+        <div class="container py-5" id="custom-cards">
+  <h2 class="pb-2 border-bottom">~SUBMISSIONS</h2>
+
+  <div class="row row-cols-3 align-items-stretch py-5">
+    <div class="col">
+      <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1 bg-primary">
+          <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center">
+          CODEFORCES 
+          </h2>
+            <button type="button" class="btn text-center btn-danger" onClick="location.href='/cp_solutions/codeforces'">GO</button>
+          <ul class="d-flex list-unstyled mt-auto">
+            <li class="me-auto">
+            </li>
+            <li class="d-flex align-items-center me-3">
+            </li>
+            <li class="d-flex align-items-center">
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1 bg-primary">
+            <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-light text-center">
+                     CODECHEF 
+            </h2>          
+            <button type="button" class="btn text-center btn-danger" onClick="location.href='#'">GO</button>
+            <ul class="d-flex list-unstyled mt-auto">
+            <li class="me-auto">
+            </li>
+            <li class="d-flex align-items-center me-3">
+            </li>
+            <li class="d-flex align-items-center">
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1 bg-primary">
+          <h2 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-center">
+                  HACKEREARTH
+            </h2> 
+            <button type="button" class="btn text-center btn-danger" onClick="location.href='#'">GO</button>
+          <ul class="d-flex list-unstyled mt-auto">
+            <li class="me-auto">
+            </li>
+            <li class="d-flex align-items-center me-3">
+            </li>
+            <li class="d-flex align-items-center">
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+ <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+{% endblock body %}

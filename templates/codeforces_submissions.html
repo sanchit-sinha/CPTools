@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% block title %}Codeforce{% endblock title %}
+{% block style%}
+    /* Style the tab */
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 30%;
+  height: 300px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  width: 70%;
+  border-left: none;
+  height: 300px;
+}
+{% endblock style %}
+
+{% block body%}
+    {% comment %} <div class = "container-fluid my-5">
+        <div class="tab">
+            <button class="tablinks bg-primary text-light" onclick="openCity(event, 'Profile')" >Profile</button>
+            <button class="tablinks bg-primary text-light" onclick="openCity(event, 'Contest')">Contest</button>
+            <button class="tablinks bg-primary text-light" onclick="openCity(event, 'Submissions')" id="defaultOpen">Submissions</button>
+        </div>
+
+        <div id="Profile" class="tabcontent">
+        <h3>Profile</h3>
+        <p>Yet to be devloped</p>
+        </div>
+
+        <div id="Contest" class="tabcontent">
+        <h3>Contest</h3>
+        <p>Yet to be devloped</p> 
+        </div>
+
+        <div id="Submissions" class="tabcontent">
+        <h3>Submissions</h3>
+        <p>Tokyo is the capital of Japan.</p>
+        </div>
+    </div> {% endcomment %}
+
+
+     <div class = "container my-5">
+         <div class = "search">
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    </div>
+
+    <div class = "container">
+        <div class="accordion my-5" id="accordionExample">
+            {% for x in variable1 %}
+        <div class="card m-b-0 my-1 sec" >
+                <button class="accordianbtn btn btn-link card-title mb-0 p-0"  type="button" id = "{{x.id}}" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <div class="card-header text-center" id="heading">
+            <p class="mb-0 text-light ">
+                    <strong>{% filter upper %} {{x.name}} {% endfilter %}</strong>
+            </p>
+            </div>
+                </button>
+
+            <div id="collapse{{x.id}}" class="collapse accordion_description hide bg-warning " aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+            <p id = "snippet_code">
+                <pre>{{x.value}}<pre>
+            </p>
+            </div>
+            </div>
+
+            <input type="text" value="{{x.value}}"  style="display:none" id="snippet_code">
+
+            </div>
+                {% endfor %}
+
+        </div>
+
+<script>
+    $(document).ready(function(){
+    $("#myInput").on("keypress click input", function () {
+        var val = $(this).val();
+        if(val.length) {
+            $(".accordion .card.m-b-0").hide().filter(function () {
+                return $('.card-title', this).text().toLowerCase().indexOf(val.toLowerCase()) > -1;
+            }).show();
+        }
+        else {
+            $(".accordion .card.m-b-0").show();
+        }
+    });
+    
+    });
+
+    $('.accordianbtn').click(function(){
+        var ID = "collapse" + this.id;
+        var ele = document.getElementById(ID);
+        if (ele.style.display === "block") {
+          ele.style.display = "none";
+        } else {
+          ele.style.display = "block";
+        }
+    });
+
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+
+
+{% endblock body %}

@@ -21,5 +21,7 @@ urlpatterns = [
     path('', views.index , name = "home"),
     path('snippets', views.snippets , name = "snippets"),
     path('calculator', views.calulator , name = "calculator"),
-    path('contact', views.contact , name = "contact")
+    path('contact', views.contact , name = "contact"),
+    path('cp_solutions', views.cp_solutions , name = "cp_solutions"),
+    path('cp_solutions/codeforces', views.codeforces_submissions , name = "codeforces_submissions"),
 ]
