@@ -13,5 +13,5 @@ Features needed to be added
 2) Note making (something like a sketchpad)
 3) CP calendar
 4) CP visualizer - Find your number of questions solved, types of question solved, rankings , rating changes from famous sites, etc at one place
-
+5) solution of individual users in their respective profile page(for every solved problem of every contest)  
 Feel free to create any issues or add any other feature you want me to add
